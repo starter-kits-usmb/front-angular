@@ -1,13 +1,37 @@
-<div class="main-container flex-col center">
+<div class="main-container flex-col">
   <h1>What's available ?</h1>
-  <button (click)="showNotification('success')">
-    Show a sucess notification
-  </button>
-  <button (click)="showNotification('warning')">
-    Show a warning notification
-  </button>
-  <button (click)="showNotification('error')">
-    Show an error notification
-  </button>
-  <button (click)="showLoadingScreen()">Show a loading screen</button>
+  <!-- Toast and loading -->
+  <h2>Toasts and loading</h2>
+  <div class="flex-row">
+    <button class="basic" (click)="showNotification('success')">
+      Show a success notification
+    </button>
+    <button class="basic" (click)="showNotification('warning')">
+      Show a warning notification
+    </button>
+    <button class="basic" (click)="showNotification('error')">
+      Show an error notification
+    </button>
+    <button class="basic" (click)="showLoadingScreen()">
+      Show a loading screen
+    </button>
+  </div>
+  <!-- Basic custom buttons -->
+  <h2>Classes for buttons</h2>
+  <div class="flex-row">
+    <button class="basic">button basic</button>
+    <button class="primary">button primary</button>
+    <button class="success">button success</button>
+    <button class="warning">button warning</button>
+    <button class="danger">button danger</button>
+  </div>
+  <!-- Custom layout classes -->
+  <h2>Custom layout classes</h2>
+  <img src="assets/illustrations/demo_layout.svg" alt="" />
+  <!-- Authentification -->
+  <h2>Authentification</h2>
+  <p>
+    An authentification service in core/services, ready to be linked with your
+    backend. See the README.
+  </p>
 </div>

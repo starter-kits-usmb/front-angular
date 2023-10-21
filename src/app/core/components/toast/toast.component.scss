@@ -49,10 +49,16 @@ div {
   opacity: 0;
   animation: fade-in 0.5s ease 0.5s forwards;
   pointer-events: none;
-
+  gap: 0;
   app-loading {
     width: 80%;
     max-width: 700px;
+  }
+  p {
+    text-align: center;
+  }
+  .illustration {
+    height: 80%;
   }
 
   .dots-pulse:after {
@@ -63,11 +69,12 @@ div {
     content: '\2026';
     /* ascii code for the ellipsis character */
     width: 0px;
+    font-size: 2rem;
   }
 
   @keyframes ellipsis {
     to {
-      width: 2ch;
+      width: 1.5ch;
     }
   }
 

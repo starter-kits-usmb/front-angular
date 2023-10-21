@@ -1,0 +1,15 @@
+@import '/src/app/styles/variables.scss';
+
+h1 {
+  text-align: center;
+}
+
+pre {
+  background-color: $text1;
+  color: $background;
+  padding: 0.5rem;
+}
+
+img {
+  width: 50%;
+}

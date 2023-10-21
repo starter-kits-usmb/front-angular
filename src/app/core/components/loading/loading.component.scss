@@ -1,0 +1,89 @@
+svg {
+  height: 100%;
+  width: fit-content;
+  #cloud_1,
+  #cloud_2,
+  #cloud_3 {
+    opacity: 0;
+  }
+  #cloud_1 {
+    animation: cloud 25s linear infinite;
+  }
+  #cloud_2 {
+    animation: cloud_reverse 15s linear infinite;
+    animation-delay: 1s;
+  }
+  #cloud_3 {
+    animation: cloud 9s linear infinite;
+    animation-delay: 0.5s;
+  }
+
+  #ballon_bg_1 {
+    animation: ballon_bg 15s ease-in-out infinite;
+  }
+
+  #ballon_bg_2 {
+    animation: ballon_bg 20s ease-in-out infinite;
+  }
+  #ballon_main {
+    animation: ballon_main 7s ease-in-out infinite;
+  }
+}
+
+@keyframes ballon_bg {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ballon_main {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes cloud {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(90%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes cloud_reverse {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(-90%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}

@@ -6,6 +6,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+body {
+  background-color: $background;
+  color: $text1;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,4 +21,46 @@
   margin-top: $nav-height;
   min-height: calc(100vh - $nav-height - 2rem);
   padding: 1rem;
+}
+
+button {
+  &.basic {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  &.primary {
+    @extend .basic;
+    background-color: $primary;
+    color: $background;
+    &:hover {
+      background-color: darken($primary, 10%);
+    }
+  }
+  &.success {
+    @extend .basic;
+    background-color: $green;
+    color: $background;
+    &:hover {
+      background-color: darken($green, 20%);
+    }
+  }
+  &.danger {
+    @extend .basic;
+    background-color: $red;
+    color: $background;
+    &:hover {
+      background-color: darken($red, 20%);
+    }
+  }
+  &.warning {
+    @extend .basic;
+    background-color: $yellow;
+    color: $text1;
+    &:hover {
+      background-color: darken($yellow, 20%);
+    }
+  }
 }

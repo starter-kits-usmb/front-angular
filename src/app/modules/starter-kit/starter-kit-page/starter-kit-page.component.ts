@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ToastLevel } from 'src/app/core/models/toast-level';
 import { ToastService } from 'src/app/core/service/toast.service';
 
@@ -15,9 +15,9 @@ export class StarterKitPageComponent {
     this.toastService.Show(`This is a ${level} toast`, level as ToastLevel);
   }
   showLoadingScreen() {
-    this.toastService.ShowLoading('Loading');
+    this.toastService.ShowLoading('Message to show during the loading screen.');
     setTimeout(() => {
       this.toastService.HideLoading();
-    }, 3000);
+    }, 5000);
   }
 }
