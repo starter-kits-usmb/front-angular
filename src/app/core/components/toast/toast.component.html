@@ -1,0 +1,15 @@
+<div
+  *ngIf="toast.visible"
+  [ngClass]="{
+    visible: toast.visible,
+    error: toast.type == 'error',
+    warning: toast.type == 'warning'
+  }">
+  {{ toast.message }}
+</div>
+
+<section *ngIf="toast.loading" class="flex-col loading-screen">
+  <app-loading></app-loading>
+  <p *ngIf="toast.loadingMessage != ''">{{ toast.loadingMessage }}</p>
+  <h3 class="dots-pulse">Loading</h3>
+</section>

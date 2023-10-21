@@ -1,0 +1,67 @@
+@import '/src/app/styles/variables.scss';
+@import '/src/app/styles/mixins.scss';
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: $nav-height;
+  width: calc(100% - 2rem);
+  background-color: $background;
+  padding: 0 1rem;
+  a {
+    text-decoration: none;
+    color: $text1;
+    u &:visited {
+      color: $text1;
+    }
+  }
+
+  .nav-icon {
+    display: none;
+
+    @include width-under(800px) {
+      display: block;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .logo {
+    img {
+      height: calc($nav-height - 1rem);
+    }
+  }
+
+  .menu {
+    @include width-under(800px) {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
+      &.active,
+      &.nav-icon {
+        display: flex;
+      }
+
+      &.content {
+        position: absolute;
+        top: $nav-height;
+        left: 0;
+        width: 100%;
+        min-height: calc(100vh - $nav-height);
+        background-color: $background;
+        z-index: 10000;
+
+        a,
+        p {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+@import 'src/app/styles/variables.scss';
+
+div {
+  position: fixed;
+  transform: translateX(130%);
+  display: none;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  min-width: 80px;
+  max-width: 400px;
+  background-color: $green;
+  color: $background;
+  border-radius: 1rem;
+  &.error {
+    background-color: $red;
+    color: $background;
+  }
+  &.warning {
+    background-color: $yellow;
+    color: $text1;
+  }
+  &.visible {
+    display: block;
+    animation: slide-in-then-vanish 2.5s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes slide-in-then-vanish {
+    0% {
+      transform: translateX(130%);
+    }
+    10% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $background;
+  z-index: 1000;
+  opacity: 0;
+  animation: fade-in 0.5s ease 0.5s forwards;
+  pointer-events: none;
+
+  app-loading {
+    width: 80%;
+    max-width: 700px;
+  }
+
+  .dots-pulse:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis steps(4, end) 2000ms infinite;
+    content: '\2026';
+    /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+
+  @keyframes ellipsis {
+    to {
+      width: 2ch;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      pointer-events: inherit;
+      opacity: 0;
+    }
+    100% {
+      pointer-events: inherit;
+      opacity: 1;
+    }
+  }
+}

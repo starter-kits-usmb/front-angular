@@ -1,0 +1,52 @@
+<nav class="flex-row btw middle">
+  <!-- Logo -->
+  <div>
+    <a routerLink="/home" class="logo" (click)="phoneMenuOpen = false">
+      <img src="assets/icons/logo.svg" alt="logo" />
+    </a>
+  </div>
+
+  <!-- nav items -->
+  <div class="flex-row menu content" [ngClass]="{ active: phoneMenuOpen }">
+    <a
+      (click)="phoneMenuOpen = false"
+      routerLink="/starter-kit"
+      routerLinkActive="active"
+      >Starter kit</a
+    >
+    <a
+      *ngIf="!authService.connected"
+      (click)="phoneMenuOpen = false"
+      routerLink="/login"
+      routerLinkActive="active"
+      >Login</a
+    >
+    <a
+      *ngIf="!authService.connected"
+      (click)="phoneMenuOpen = false"
+      routerLink="/signup"
+      routerLinkActive="active"
+      class="black-btn"
+      >Sign-up</a
+    >
+    <a
+      *ngIf="authService.connected"
+      (click)="phoneMenuOpen = false"
+      routerLink="/games"
+      routerLinkActive="active"
+      >Profil</a
+    >
+  </div>
+  <div class="menu nav-icon">
+    <img
+      *ngIf="!phoneMenuOpen"
+      (click)="phoneMenuOpen = true"
+      src="assets/icons/navbar.svg"
+      alt="open menu" />
+    <img
+      *ngIf="phoneMenuOpen"
+      (click)="phoneMenuOpen = false"
+      src="assets/icons/close.svg"
+      alt="close menu" />
+  </div>
+</nav>
