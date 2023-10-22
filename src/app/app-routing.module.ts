@@ -21,6 +21,13 @@ const routes: Routes = [
         m => m.StarterKitModule
       ),
   },
+  {
+    path: ROUTES.authentification,
+    loadChildren: () =>
+      import('./modules/authentification/authentification.module').then(
+        m => m.AuthentificationModule
+      ),
+  },
   { path: ROUTES.notFound, component: NotFoundComponent },
   { path: '**', redirectTo: ROUTES.notFound },
 ];

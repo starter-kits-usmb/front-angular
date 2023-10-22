@@ -26,10 +26,11 @@ body {
 button {
   &.basic {
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: $radius;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: $shadow;
   }
   &.primary {
     @extend .basic;
@@ -63,4 +64,23 @@ button {
       background-color: darken($yellow, 20%);
     }
   }
+}
+
+input,
+select,
+textarea {
+  &.basic {
+    padding: 0.5rem 1rem;
+    border-radius: $radius;
+    border: none;
+    background-color: white;
+    box-shadow: $shadow;
+    &:focus {
+      outline: $primary 2px solid;
+    }
+  }
+}
+
+textarea {
+  resize: none;
 }

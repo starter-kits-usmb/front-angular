@@ -35,27 +35,27 @@ export class AuthService {
     );
   }
 
-  login(login: string, password: string): void {
+  login(login: string, password: string): Observable<boolean> {
     let response = this.http.post<TokenPayload>(
       environment.API_URL + '/api/login',
       { login, password }
     );
-    response
-      .pipe(
-        take(1),
-        catchError(err => {
-          console.log(err);
-          return of({ token: '' });
-        })
-      )
-      .subscribe(res => {
+    return response.pipe(
+      take(1),
+      map(res => {
         this.token = res.token;
         localStorage.setItem('token', res.token);
-      });
+        return true;
+      }),
+      catchError(err => {
+        console.log(err);
+        return of(false);
+      })
+    );
   }
 
-  register(): Observable<void> {
-    return of();
+  register(login: string, password: string): Observable<boolean> {
+    return of(false);
   }
 
   logout(): Observable<boolean> {

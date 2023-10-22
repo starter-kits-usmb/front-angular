@@ -1,0 +1,38 @@
+<div class="main-container flex-row middle center">
+  <form [formGroup]="signupForm" class="flex-col center middle">
+    <h1>Sign-up</h1>
+    <input
+      type="text"
+      formControlName="username"
+      class="basic"
+      id="username"
+      placeholder="Enter username" />
+    <input
+      type="password"
+      formControlName="password"
+      class="basic"
+      id="password"
+      placeholder="Password" />
+    <input
+      type="password"
+      formControlName="passwordVerification"
+      class="basic"
+      id="password"
+      placeholder="Confirm password" />
+    <p *ngIf="errorInForm" class="error-message">{{ errorMessage }}</p>
+    <p *ngIf="!errorInForm" class="pwd-info">
+      Password must have 8 character minimum
+    </p>
+    <button
+      type="submit"
+      (click)="onSubmitForm()"
+      class="primary"
+      [disabled]="signupForm.invalid">
+      Submit
+    </button>
+  </form>
+  <img
+    class="illustration"
+    src="assets/illustrations/auth.svg"
+    alt="register illustration" />
+</div>

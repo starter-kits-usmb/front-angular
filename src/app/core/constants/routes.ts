@@ -1,7 +1,6 @@
 export const ROUTES = {
   home: 'home',
   starterKit: 'starter-kit',
-  login: 'login',
-  register: 'register',
+  authentification: 'auth',
   notFound: '404',
 };

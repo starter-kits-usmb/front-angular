@@ -8,6 +8,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
+import { BaseAppComponent } from './components/base-app/base-app.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
     LoadingComponent,
     NotFoundComponent,
     NavBarComponent,
+    BaseAppComponent,
   ],
   imports: [CommonModule, HttpClientModule, RouterModule],
   providers: [

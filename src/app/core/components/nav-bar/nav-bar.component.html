@@ -17,14 +17,14 @@
     <a
       *ngIf="!authService.connected"
       (click)="phoneMenuOpen = false"
-      routerLink="/login"
+      routerLink="auth/login"
       routerLinkActive="active"
       >Login</a
     >
     <a
       *ngIf="!authService.connected"
       (click)="phoneMenuOpen = false"
-      routerLink="/signup"
+      routerLink="auth/register"
       routerLinkActive="active"
       class="black-btn"
       >Sign-up</a
@@ -32,7 +32,7 @@
     <a
       *ngIf="authService.connected"
       (click)="phoneMenuOpen = false"
-      routerLink="/games"
+      routerLink="/profile"
       routerLinkActive="active"
       >Profil</a
     >
