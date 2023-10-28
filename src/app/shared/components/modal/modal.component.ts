@@ -5,20 +5,26 @@ import {
   OnDestroy,
   Output,
 } from '@angular/core';
-import { BaseAppComponent } from 'src/app/core/components/base-app/base-app.component';
-import { ModalPayload } from 'src/app/core/models/modal-payload';
+import {
+  DEFAULT_MODAL_OPTIONS,
+  ModalOptions,
+} from 'src/app/core/models/modal/modal-options';
+import { ModalPayload } from 'src/app/core/models/modal/modal-payload';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
+  outputs: ['closeEvent'],
 })
 export class ModalComponent implements OnDestroy {
-  @Input() title = 'Please confirm your choice';
-  @Input() message = 'Are you sure you want to do this?';
-  @Input() cancelText = 'Cancel';
-  @Input() confirmText = 'Confirm';
-  @Input() confirmColor = 'primary';
+  @Input() options: ModalOptions = DEFAULT_MODAL_OPTIONS;
+
+  /**
+   * @description
+   * If true, the confirm button will be enabled.
+   */
+  @Input() validator: boolean = true;
 
   @Output() closeEvent = new EventEmitter<ModalPayload>();
 
@@ -32,11 +38,13 @@ export class ModalComponent implements OnDestroy {
   }
 
   public confirmModal(payload: ModalPayload = { success: true }): void {
+    console.log('confirmModal called');
     this.closeEventCounter++;
     this.closeEvent.emit(payload);
   }
 
   public cancelModal(payload: ModalPayload = { success: false }): void {
+    console.log('cancelModal called');
     this.closeEventCounter++;
     this.closeEvent.emit(payload);
   }

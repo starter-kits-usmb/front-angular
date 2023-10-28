@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastLevel } from '../models/toast-level';
+import { ToastLevel } from '../../models/toast-level';
 
 @Injectable({
   providedIn: 'root',

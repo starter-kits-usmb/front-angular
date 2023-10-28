@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
-import { ModalComponent } from '../modal/modal.component';
+import { BaseModalComponent } from 'src/app/core/components/base-modal/base-modal.component';
 
 @Component({
   selector: 'app-confirm-modal',
   templateUrl: './confirm-modal.component.html',
   styleUrls: ['./confirm-modal.component.scss'],
+  outputs: ['closeEvent'],
 })
-export class ConfirmModalComponent extends ModalComponent {}
+export class ConfirmModalComponent extends BaseModalComponent {
+  constructor() {
+    super();
+  }
+}

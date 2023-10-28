@@ -1,0 +1,14 @@
+<app-modal
+  [options]="options"
+  [validator]="username !== ''"
+  (closeEvent)="handleClose($event)">
+  <!-- custom info -->
+  <div class="w-100 flex-col center middle">
+    <input
+      type="text"
+      class="basic"
+      placeholder="basic input"
+      [(ngModel)]="username"
+      placeholder="Name" />
+  </div>
+</app-modal>

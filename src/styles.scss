@@ -3,6 +3,7 @@
 @import '/src/app/styles/mixins.scss';
 @import '/src/app/styles/layout.scss';
 @import '/src/app/styles/utilities.scss';
+@import '/src/app/styles/sk-design-system.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -21,70 +22,4 @@ body {
   margin-top: $nav-height;
   min-height: calc(100vh - $nav-height - 2rem);
   padding: 1rem;
-}
-
-button {
-  &.big {
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-  }
-  &.basic {
-    padding: 0.5rem 1rem;
-    border-radius: $radius;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: $shadow;
-  }
-  &.primary {
-    @extend .basic;
-    background-color: $primary;
-    color: $background;
-    &:hover {
-      background-color: darken($primary, 10%);
-    }
-  }
-  &.success {
-    @extend .basic;
-    background-color: $green;
-    color: $background;
-    &:hover {
-      background-color: darken($green, 20%);
-    }
-  }
-  &.danger {
-    @extend .basic;
-    background-color: $red;
-    color: $background;
-    &:hover {
-      background-color: darken($red, 20%);
-    }
-  }
-  &.warning {
-    @extend .basic;
-    background-color: $yellow;
-    color: $text1;
-    &:hover {
-      background-color: darken($yellow, 20%);
-    }
-  }
-}
-
-input,
-select,
-textarea {
-  &.basic {
-    padding: 0.5rem 1rem;
-    border-radius: $radius;
-    border: none;
-    background-color: white;
-    box-shadow: $shadow;
-    &:focus {
-      outline: $primary 2px solid;
-    }
-  }
-}
-
-textarea {
-  resize: none;
 }

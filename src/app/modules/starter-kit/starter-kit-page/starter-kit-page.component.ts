@@ -1,8 +1,8 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastLevel } from 'src/app/core/models/toast-level';
 import { ModalService } from 'src/app/core/service/modal/modal.service';
-import { ToastService } from 'src/app/core/service/toast.service';
-import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
+import { ToastService } from 'src/app/core/service/toast/toast.service';
+import { CustomModalComponent } from '../custom-modal/custom-modal.component';
 
 @Component({
   selector: 'app-starter-kit-page',
@@ -27,8 +27,18 @@ export class StarterKitPageComponent {
   }
 
   openModal() {
-    this.modalService.open(ModalComponent).subscribe(payload => {
-      console.log('Modal 1 closed, payload is', payload);
+    this.modalService
+      .open(CustomModalComponent, { title: "What's your name ?" })
+      .subscribe(payload => {
+        if (payload.success) {
+          this.toastService.Show('Hello ' + payload.data, ToastLevel.Success);
+        } else {
+          this.toastService.Show('The user canceled', ToastLevel.Warning);
+        }
+      });
+  }
+  openConfirmModal() {
+    this.modalService.openConfirmModal().subscribe(payload => {
       if (payload.success) {
         this.toastService.Show('Modal confirmed', ToastLevel.Success);
       } else {

@@ -8,7 +8,7 @@
   {{ toast.message }}
 </div>
 
-<section *ngIf="toast.loading" class="flex-col center top loading-screen">
+<section *ngIf="toast.loading" class="flex-col center middle loading-screen">
   <app-loading class="illustration"></app-loading>
   <p *ngIf="toast.loadingMessage != ''">{{ toast.loadingMessage }}</p>
   <h3 class="dots-pulse"></h3>

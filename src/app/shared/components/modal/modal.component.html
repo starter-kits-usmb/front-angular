@@ -1,12 +1,21 @@
 <div class="blurry-bg"></div>
 <div class="modal flex-col center middle">
-  <h2>{{ title }}</h2>
+  <h2>{{ options.title ? options.title : 'no title' }}</h2>
   <ng-content></ng-content>
-  <p>{{ message }}</p>
+  <p *ngIf="options.message">{{ options.message }}</p>
   <div class="flex-row middle center">
-    <button class="basic big" (click)="cancelModal()">{{ cancelText }}</button>
-    <button class="big" [ngClass]="confirmColor" (click)="confirmModal()">
-      {{ confirmText }}
+    <button
+      class="big"
+      [ngClass]="options.cancelColor ? options.cancelColor : 'basic'"
+      (click)="cancelModal()">
+      {{ options.cancelText ? options.cancelText : 'No' }}
+    </button>
+    <button
+      class="big"
+      [ngClass]="options.confirmColor ? options.confirmColor : 'primary'"
+      [disabled]="!validator"
+      (click)="confirmModal()">
+      {{ options.confirmText ? options.confirmText : 'Yes' }}
     </button>
   </div>
 </div>

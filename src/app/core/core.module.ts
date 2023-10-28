@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { throwIfAlreadyLoaded } from './guard/module-import.gard';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token.interceptor';
-import { ToastComponent } from './components/toast/toast.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { BaseAppComponent } from './components/base-app/base-app.component';
 import { ModalInjectorComponent } from './components/modal-injector/modal-injector.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { BaseModalComponent } from './components/base-modal/base-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ModalInjectorComponent } from './components/modal-injector/modal-inject
     NavBarComponent,
     BaseAppComponent,
     ModalInjectorComponent,
+    BaseModalComponent,
   ],
   imports: [CommonModule, HttpClientModule, RouterModule],
   providers: [

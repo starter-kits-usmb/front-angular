@@ -1,17 +1,19 @@
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   Inject,
   Injectable,
-  Injector,
-  TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { Observable, Subject, take } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
-import { ModalPayload } from '../../models/modal-payload';
 import { DOCUMENT } from '@angular/common';
 import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { ModalPayload } from '../../models/modal/modal-payload';
+import {
+  MODAL_CONFIRM_OPTIONS,
+  ModalOptions,
+} from '../../models/modal/modal-options';
+import { BaseModalComponent } from '../../components/base-modal/base-modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -22,26 +24,58 @@ export class ModalService {
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
-  open(content: typeof ModalComponent, options?: {}) {
+  open(content: any, options?: ModalOptions) {
     this.document.body.style.overflow = 'hidden';
+    console.log('opions are', options);
     const modal = this.viewContainerRef.createComponent(content);
+    if (options) {
+      console.log("let's set options");
+      (modal.instance as BaseModalComponent).options = options;
+      console.log('options set');
+    }
+    this.modals.push(modal);
+
+    //destroy modal when close event is emitted
+    (modal.instance as BaseModalComponent).closeEvent
+      .pipe(take(1))
+      .subscribe(() => {
+        console.log('closeEvent received');
+        this.destroyModal(modal);
+      });
+
+    return (modal.instance as BaseModalComponent).closeEvent
+      .asObservable()
+      .pipe(take(1));
+  }
+
+  openConfirmModal(
+    options: ModalOptions = MODAL_CONFIRM_OPTIONS
+  ): Observable<ModalPayload> {
+    this.document.body.style.overflow = 'hidden';
+    const modal = this.viewContainerRef.createComponent(ConfirmModalComponent);
+    modal.instance.options = options;
     this.modals.push(modal);
 
     //destroy modal when close event is emitted
     modal.instance.closeEvent.pipe(take(1)).subscribe(() => {
-      modal.destroy();
+      console.log('closeEvent received');
+      this.destroyModal(modal);
     });
 
     return modal.instance.closeEvent.asObservable().pipe(take(1));
   }
 
-  openConfirmModal(options?: {}): Observable<ModalPayload> {
-    return this.open(ConfirmModalComponent, options);
-  }
-
   closeLatestModal() {
     const modal = this.modals.pop();
     modal?.destroy();
+    if (this.modals.length === 0) {
+      this.document.body.style.overflow = 'auto';
+    }
+  }
+
+  private destroyModal(modal: ComponentRef<any>) {
+    modal?.destroy();
+    this.modals = this.modals.filter(m => m !== modal);
     if (this.modals.length === 0) {
       this.document.body.style.overflow = 'auto';
     }
