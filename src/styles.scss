@@ -24,6 +24,10 @@ body {
 }
 
 button {
+  &.big {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
   &.basic {
     padding: 0.5rem 1rem;
     border-radius: $radius;

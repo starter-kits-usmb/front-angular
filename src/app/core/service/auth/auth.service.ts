@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, Observable, catchError, map, take } from 'rxjs';
-import { AuthPayload } from '../models/auth-payload';
 import { environment } from 'src/environments/environment';
-import { TokenPayload } from '../models/token-payload';
+import { TokenPayload } from '../../models/token-payload';
+import { AuthPayload } from '../../models/auth-payload';
 
 @Injectable({
   providedIn: 'root',

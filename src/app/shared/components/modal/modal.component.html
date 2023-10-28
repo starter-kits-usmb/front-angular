@@ -1,0 +1,12 @@
+<div class="blurry-bg"></div>
+<div class="modal flex-col center middle">
+  <h2>{{ title }}</h2>
+  <ng-content></ng-content>
+  <p>{{ message }}</p>
+  <div class="flex-row middle center">
+    <button class="basic big" (click)="cancelModal()">{{ cancelText }}</button>
+    <button class="big" [ngClass]="confirmColor" (click)="confirmModal()">
+      {{ confirmText }}
+    </button>
+  </div>
+</div>

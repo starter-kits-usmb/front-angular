@@ -9,6 +9,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { BaseAppComponent } from './components/base-app/base-app.component';
+import { ModalInjectorComponent } from './components/modal-injector/modal-injector.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BaseAppComponent } from './components/base-app/base-app.component';
     NotFoundComponent,
     NavBarComponent,
     BaseAppComponent,
+    ModalInjectorComponent,
   ],
   imports: [CommonModule, HttpClientModule, RouterModule],
   providers: [
@@ -31,6 +33,7 @@ import { BaseAppComponent } from './components/base-app/base-app.component';
     LoadingComponent,
     NotFoundComponent,
     NavBarComponent,
+    ModalInjectorComponent,
   ],
 })
 export class CoreModule {
