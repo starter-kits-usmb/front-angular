@@ -89,6 +89,35 @@
   }
 }
 
+.grid {
+  display: grid;
+  gap: 1rem;
+
+  &.no-gap {
+    gap: 0;
+  }
+
+  &.small-gap {
+    gap: 0.5rem;
+  }
+
+  &-row {
+    &-2 {
+      @extend .grid;
+      //2 row that are equal height and take up 100% of the parent
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+
+  &-col {
+    &-2 {
+      @extend .grid;
+      //2 col that are equal height and take up 100% of the parent
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
 .h {
   &-full {
     height: 100vh;

@@ -11,6 +11,7 @@ export class ToastService {
   loading: boolean = false;
   type: ToastLevel;
   triggerNumber: number;
+  loadingScreenClass: string = '';
 
   constructor() {
     this.visible = false;
@@ -43,7 +44,10 @@ export class ToastService {
     this.loading = true;
   }
 
-  HideLoading() {
+  async HideLoading() {
+    this.loadingScreenClass = 'fade-out';
+    await new Promise(resolve => setTimeout(resolve, 300));
+    this.loadingScreenClass = '';
     this.loadingMessage = '';
     this.loading = false;
   }

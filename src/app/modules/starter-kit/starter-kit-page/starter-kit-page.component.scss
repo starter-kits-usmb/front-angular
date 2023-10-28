@@ -11,5 +11,14 @@ pre {
 }
 
 img {
-  width: 50%;
+  width: 100%;
+}
+
+section {
+  width: calc(100% - 2rem);
+  box-shadow: $shadow;
+  border-radius: $radius;
+  background: $background-light;
+  padding: 1rem;
+  border: solid 2px $text1-07;
 }

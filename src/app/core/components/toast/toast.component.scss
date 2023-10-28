@@ -60,6 +60,9 @@ div {
   .illustration {
     height: 80%;
   }
+  &.fade-out {
+    animation: fade-out 0.3s ease forwards;
+  }
 
   .dots-pulse:after {
     overflow: hidden;
@@ -86,6 +89,17 @@ div {
     100% {
       pointer-events: inherit;
       opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      pointer-events: inherit;
+      opacity: 1;
+    }
+    100% {
+      pointer-events: none;
+      opacity: 0;
     }
   }
 }

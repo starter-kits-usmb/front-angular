@@ -1,56 +1,59 @@
-<div class="main-container flex-col">
+<div class="main-container flex-col center">
   <h1>What's available ?</h1>
-  <!-- Toast and loading -->
-  <h2>Toasts and loading</h2>
-  <div class="flex-row">
-    <button class="basic" (click)="showNotification('success')">
-      Show a success notification
-    </button>
-    <button class="basic" (click)="showNotification('warning')">
-      Show a warning notification
-    </button>
-    <button class="basic" (click)="showNotification('error')">
-      Show an error notification
-    </button>
-    <button class="basic" (click)="showLoadingScreen()">
-      Show a loading screen
-    </button>
-  </div>
-  <!-- Modal -->
-  <h2>Modal</h2>
-  <div class="flex-row">
-    <button class="basic" (click)="openModal()">Show a modal</button>
-    <button class="basic" (click)="openConfirmModal()">
-      Show a confirm modal
-    </button>
-  </div>
+  <div class="grid-col-2">
+    <!-- Toast and loading -->
+    <section class="flex-col center top">
+      <h2>Toasts, modal & loading screen</h2>
+      <div class="flex-row wrap">
+        <button class="success" (click)="showNotification('success')">
+          Show a success notification
+        </button>
+        <button class="warning" (click)="showNotification('warning')">
+          Show a warning notification
+        </button>
+        <button class="danger" (click)="showNotification('error')">
+          Show an error notification
+        </button>
+        <button class="basic" (click)="openModal()">Show a modal</button>
+        <button class="basic" (click)="openConfirmModal()">
+          Show a confirm modal
+        </button>
+        <button class="primary" (click)="showLoadingScreen()">
+          Show a loading screen for 5 seconds
+        </button>
+      </div>
+    </section>
 
-  <!-- Basic custom buttons -->
-  <h2>Classes for buttons</h2>
-  <div class="flex-row">
-    <button class="basic">button basic</button>
-    <button class="primary">button primary</button>
-    <button class="success">button success</button>
-    <button class="warning">button warning</button>
-    <button class="danger">button danger</button>
+    <!-- Light Design system -->
+    <section class="flex-col center top">
+      <h2>Light design system</h2>
+      <div class="flex-row wrap">
+        <button class="basic">button basic</button>
+        <button class="primary">button primary</button>
+        <button class="success">button success</button>
+        <button class="warning">button warning</button>
+        <button class="danger">button danger</button>
+        <input type="text" class="basic" placeholder="basic input" />
+        <select class="basic">
+          <option value="1">option 1</option>
+          <option value="2">option 2</option>
+        </select>
+        <textarea class="basic" placeholder="basic textarea"></textarea>
+      </div>
+    </section>
+    <!-- Custom layout classes -->
+    <section class="flex-col center top">
+      <h2>Custom layout classes</h2>
+      <img src="assets/illustrations/demo_layout.svg" alt="" />
+    </section>
+
+    <section class="flex-col center top">
+      <!-- Authentification -->
+      <h2>Authentification</h2>
+      <p>
+        An authentification service in core/services, ready to be linked with
+        your backend. See the README.
+      </p>
+    </section>
   </div>
-  <!-- Custom inputs -->
-  <h2>Classes for inputs</h2>
-  <div class="flex-row top">
-    <input type="text" class="basic" placeholder="basic input" />
-    <select class="basic">
-      <option value="1">option 1</option>
-      <option value="2">option 2</option>
-    </select>
-    <textarea class="basic" placeholder="basic textarea"></textarea>
-  </div>
-  <!-- Custom layout classes -->
-  <h2>Custom layout classes</h2>
-  <img src="assets/illustrations/demo_layout.svg" alt="" />
-  <!-- Authentification -->
-  <h2>Authentification</h2>
-  <p>
-    An authentification service in core/services, ready to be linked with your
-    backend. See the README.
-  </p>
 </div>
