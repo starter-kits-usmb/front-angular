@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastLevel } from 'src/app/core/models/toast-level';
-import { ModalService } from 'src/app/core/service/modal/modal.service';
-import { ToastService } from 'src/app/core/service/toast/toast.service';
+import { ModalService } from 'src/app/core/services/modal/modal.service';
+import { ToastService } from 'src/app/core/services/toast/toast.service';
 import { CustomModalComponent } from '../custom-modal/custom-modal.component';
 
 @Component({

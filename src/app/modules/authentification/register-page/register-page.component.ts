@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { BaseAppComponent } from 'src/app/core/components/base-app/base-app.component';
-import { AuthService } from 'src/app/core/service/auth/auth.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { passwordMatchValidator } from 'src/app/shared/validators/password-match.validator';
 
 @Component({

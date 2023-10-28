@@ -101,19 +101,45 @@
     gap: 0.5rem;
   }
 
+  &.micro-gap {
+    gap: 0.2rem;
+  }
+
   &-row {
     &-2 {
       @extend .grid;
-      //2 row that are equal height and take up 100% of the parent
       grid-template-rows: repeat(2, 1fr);
+    }
+    &-3 {
+      @extend .grid;
+      grid-template-rows: repeat(3, 1fr);
+    }
+    &-4 {
+      @extend .grid;
+      grid-template-rows: repeat(4, 1fr);
+    }
+    &-5 {
+      @extend .grid;
+      grid-template-rows: repeat(5, 1fr);
     }
   }
 
   &-col {
     &-2 {
       @extend .grid;
-      //2 col that are equal height and take up 100% of the parent
       grid-template-columns: repeat(2, 1fr);
+    }
+    &-3 {
+      @extend .grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &-4 {
+      @extend .grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    &-5 {
+      @extend .grid;
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 }

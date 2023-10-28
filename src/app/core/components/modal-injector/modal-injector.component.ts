@@ -4,7 +4,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { ModalService } from '../../service/modal/modal.service';
+import { ModalService } from '../../services/modal/modal.service';
 
 @Component({
   selector: 'app-modal-injector',

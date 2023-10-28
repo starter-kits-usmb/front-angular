@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthService } from '../service/auth.service';
+import { AuthService } from '../services/auth.service';
 import { ROUTES } from '../constants/routes';
 
 export const AuthGuard: CanActivateFn = (
