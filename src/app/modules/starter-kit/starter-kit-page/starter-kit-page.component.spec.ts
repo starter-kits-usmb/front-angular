@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StarterKitPageComponent } from './starter-kit-page.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('StarterKitPageComponent', () => {
   let component: StarterKitPageComponent;
@@ -8,9 +9,9 @@ describe('StarterKitPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StarterKitPageComponent ]
-    })
-    .compileComponents();
+      declarations: [StarterKitPageComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(StarterKitPageComponent);
     component = fixture.componentInstance;

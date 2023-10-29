@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
-import { BaseAppComponent } from 'src/app/core/components/base-app/base-app.component';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { passwordMatchValidator } from 'src/app/shared/validators/password-match.validator';
+import { BaseAppComponent } from '../../../core/components/base-app/base-app.component';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { passwordMatchValidator } from '../../../shared/validators/password-match.validator';
 
 @Component({
   selector: 'app-register-page',

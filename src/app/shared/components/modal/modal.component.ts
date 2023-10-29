@@ -8,8 +8,8 @@ import {
 import {
   DEFAULT_MODAL_OPTIONS,
   ModalOptions,
-} from 'src/app/core/models/modal/modal-options';
-import { ModalPayload } from 'src/app/core/models/modal/modal-payload';
+} from '../../../core/models/modal/modal-options';
+import { ModalPayload } from '../../../core/models/modal/modal-payload';
 
 @Component({
   selector: 'app-modal',

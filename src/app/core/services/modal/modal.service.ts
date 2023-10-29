@@ -5,15 +5,14 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { Observable, take } from 'rxjs';
-import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { DOCUMENT } from '@angular/common';
-import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { ModalPayload } from '../../models/modal/modal-payload';
 import {
   MODAL_CONFIRM_OPTIONS,
   ModalOptions,
 } from '../../models/modal/modal-options';
 import { BaseModalComponent } from '../../components/base-modal/base-modal.component';
+import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 
 @Injectable({
   providedIn: 'root',

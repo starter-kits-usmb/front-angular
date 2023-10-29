@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ToastLevel } from 'src/app/core/models/toast-level';
-import { ModalService } from 'src/app/core/services/modal/modal.service';
-import { ToastService } from 'src/app/core/services/toast/toast.service';
+
 import { CustomModalComponent } from '../custom-modal/custom-modal.component';
+import { ToastLevel } from '../../../core/models/toast-level';
+import { ModalService } from '../../../core/services/modal/modal.service';
+import { ToastService } from '../../../core/services/toast/toast.service';
 
 @Component({
   selector: 'app-starter-kit-page',

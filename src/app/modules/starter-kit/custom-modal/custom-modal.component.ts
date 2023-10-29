@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseModalComponent } from 'src/app/core/components/base-modal/base-modal.component';
-import { ModalPayload } from 'src/app/core/models/modal/modal-payload';
+import { BaseModalComponent } from '../../../core/components/base-modal/base-modal.component';
+import { ModalPayload } from '../../../core/models/modal/modal-payload';
 
 @Component({
   selector: 'app-custom-modal',
