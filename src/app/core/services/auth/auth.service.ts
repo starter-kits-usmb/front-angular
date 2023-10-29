@@ -27,9 +27,10 @@ export class AuthService {
 
   isTokenValid(): Observable<boolean> {
     let response = this.http.get<AuthPayload>(
-      environment.API_URL + '/api/auth'
+      environment.API_URL + '/auth/verify'
     );
     return response.pipe(
+      take(1),
       map(res => true),
       catchError(err => of(false))
     );
@@ -37,7 +38,7 @@ export class AuthService {
 
   login(login: string, password: string): Observable<boolean> {
     let response = this.http.post<TokenPayload>(
-      environment.API_URL + '/api/login',
+      environment.API_URL + '/auth/login',
       { login, password }
     );
     return response.pipe(
@@ -55,7 +56,24 @@ export class AuthService {
   }
 
   register(login: string, password: string): Observable<boolean> {
-    return of(false);
+    let response = this.http.post<AuthPayload>(
+      environment.API_URL + '/auth/user',
+      {
+        login,
+        password,
+      }
+    );
+    return response.pipe(
+      take(1),
+      map(res => {
+        if (res.id) return true;
+        else return false;
+      }),
+      catchError(err => {
+        console.log(err);
+        return of(false);
+      })
+    );
   }
 
   logout(): Observable<boolean> {

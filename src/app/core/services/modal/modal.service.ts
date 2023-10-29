@@ -26,12 +26,9 @@ export class ModalService {
 
   open(content: any, options?: ModalOptions) {
     this.document.body.style.overflow = 'hidden';
-    console.log('opions are', options);
     const modal = this.viewContainerRef.createComponent(content);
     if (options) {
-      console.log("let's set options");
       (modal.instance as BaseModalComponent).options = options;
-      console.log('options set');
     }
     this.modals.push(modal);
 
@@ -39,7 +36,6 @@ export class ModalService {
     (modal.instance as BaseModalComponent).closeEvent
       .pipe(take(1))
       .subscribe(() => {
-        console.log('closeEvent received');
         this.destroyModal(modal);
       });
 
