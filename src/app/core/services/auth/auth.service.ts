@@ -31,8 +31,10 @@ export class AuthService {
     );
     return response.pipe(
       take(1),
-      map(res => true),
-      catchError(err => of(false))
+      map(res => {
+        if (res.id) return true;
+        else return false;
+      })
     );
   }
 
@@ -44,13 +46,10 @@ export class AuthService {
     return response.pipe(
       take(1),
       map(res => {
+        if (!res.token) return false;
         this.token = res.token;
         localStorage.setItem('token', res.token);
         return true;
-      }),
-      catchError(err => {
-        console.log(err);
-        return of(false);
       })
     );
   }
@@ -68,15 +67,13 @@ export class AuthService {
       map(res => {
         if (res.id) return true;
         else return false;
-      }),
-      catchError(err => {
-        console.log(err);
-        return of(false);
       })
     );
   }
 
-  logout(): Observable<boolean> {
-    return of(false);
+  logout(): void {
+    this.token = '';
+    localStorage.removeItem('token');
+    this.connected = false;
   }
 }
