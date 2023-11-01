@@ -4,6 +4,8 @@ import { of, Observable, catchError, map, take } from 'rxjs';
 import { TokenPayload } from '../../models/api/token-payload';
 import { AuthPayload } from '../../models/api/auth-payload';
 import { environment } from '../../../../environments/environment';
+import { ToastService } from '../toast/toast.service';
+import { ToastLevel } from '../../models/toast-level';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +14,10 @@ export class AuthService {
   token: string = '';
   connected: boolean = false;
 
-  constructor(private readonly http: HttpClient) {
+  constructor(
+    private readonly http: HttpClient,
+    private readonly toastService: ToastService
+  ) {
     this.getToken();
   }
 
@@ -48,6 +53,10 @@ export class AuthService {
         localStorage.setItem('token', res.token);
         this.connected = true;
         return true;
+      }),
+      catchError(err => {
+        this.toastService.Show(err.error.message, ToastLevel.Error);
+        return of(false);
       })
     );
   }
@@ -64,7 +73,16 @@ export class AuthService {
       take(1),
       map(res => {
         if (res.id) return true;
-        else return false;
+        else {
+          this.toastService.Show('Something went wrong', ToastLevel.Error);
+          return false;
+        }
+      }),
+      catchError(err => {
+        console.log(err);
+
+        this.toastService.Show(err.error.message, ToastLevel.Error);
+        return of(false);
       })
     );
   }
