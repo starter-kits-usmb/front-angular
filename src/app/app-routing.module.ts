@@ -28,6 +28,11 @@ const routes: Routes = [
         m => m.AuthentificationModule
       ),
   },
+  {
+    path: ROUTES.user,
+    loadChildren: () =>
+      import('./modules/user/user.module').then(m => m.UserModule),
+  },
   { path: ROUTES.notFound, component: NotFoundComponent },
   { path: '**', redirectTo: ROUTES.notFound },
 ];

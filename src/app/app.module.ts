@@ -6,9 +6,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { AuthService } from './core/services/auth/auth.service';
-import { ToastService } from './core/services/toast/toast.service';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],

@@ -17,23 +17,20 @@ export class AuthService {
   }
 
   getToken(): string {
-    if (!this.token) this.token = localStorage.getItem('token') || '';
+    this.token = localStorage.getItem('token') || '';
+    this.connected = !!this.token;
     return this.token;
   }
 
-  hasToken(): boolean {
-    return !!this.token;
-  }
-
   isTokenValid(): Observable<boolean> {
-    let response = this.http.get<AuthPayload>(
-      environment.API_URL + '/auth/verify'
-    );
+    let response = this.http.get<AuthPayload>(environment.API_URL + '/auth');
     return response.pipe(
       take(1),
-      map(res => {
-        if (res.id) return true;
-        else return false;
+      map(() => {
+        return true;
+      }),
+      catchError(err => {
+        return of(false);
       })
     );
   }
@@ -49,6 +46,7 @@ export class AuthService {
         if (!res.token) return false;
         this.token = res.token;
         localStorage.setItem('token', res.token);
+        this.connected = true;
         return true;
       })
     );
@@ -56,7 +54,7 @@ export class AuthService {
 
   register(login: string, password: string): Observable<boolean> {
     let response = this.http.post<AuthPayload>(
-      environment.API_URL + '/auth/user',
+      environment.API_URL + '/auth/register',
       {
         login,
         password,

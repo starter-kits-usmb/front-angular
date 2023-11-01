@@ -38,17 +38,6 @@ describe('AuthService', () => {
     });
   });
 
-  describe('hasToken', () => {
-    it('should return true if localStorage has a token', () => {
-      service.token = 'token';
-      expect(service.hasToken()).toBe(true);
-    });
-    it("should return false if localStorage doesn't have a token", () => {
-      service.token = '';
-      expect(service.hasToken()).toBe(false);
-    });
-  });
-
   describe('isTokenValid', () => {
     it('should return true if token is valid', () => {
       jest

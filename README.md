@@ -5,7 +5,7 @@ This starter kit use angular version `15.2.0` and includes the following feature
 - [x] Scalable folder structure
 - [x] Linter and prettier
 - [x] Routing and lazy loading
-- [ ] Authentication service, compatible with LINK
+- [x] Authentication service
 - [x] Light design system and layout utilities (css class based)
 - [x] Toast service (snackbar and loading screen)
 - [x] Modal service (support custom modals)

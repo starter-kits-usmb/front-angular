@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs';
 import { BaseAppComponent } from '../../../core/components/base-app/base-app.component';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { passwordMatchValidator } from '../../../shared/validators/password-match.validator';
+import { ROUTES } from '../../../core/constants/routes';
 
 @Component({
   selector: 'app-register-page',
@@ -40,7 +41,7 @@ export class RegisterPageComponent extends BaseAppComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(registered => {
         if (registered) {
-          this.router.navigate(['/login']);
+          this.router.navigate([ROUTES.authentification + '/login']);
         } else {
           this.errorInForm = true;
           this.errorMessage = 'An error occured';
@@ -51,7 +52,7 @@ export class RegisterPageComponent extends BaseAppComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group(
       {
-        username: [null, [Validators.required]],
+        login: [null, [Validators.required]],
         password: [null, [Validators.required, Validators.minLength(8)]],
         passwordVerification: [
           null,

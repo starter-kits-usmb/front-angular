@@ -6,9 +6,9 @@ import {
   CanActivateFn,
 } from '@angular/router';
 import { catchError, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AuthService } from '../services/auth.service';
+import { map, take } from 'rxjs/operators';
 import { ROUTES } from '../constants/routes';
+import { AuthService } from '../services/auth/auth.service';
 
 export const AuthGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
@@ -18,17 +18,9 @@ export const AuthGuard: CanActivateFn = (
   const router = inject(Router);
 
   return authService.isTokenValid().pipe(
-    map(loggedIn =>
-      loggedIn
-        ? true
-        : router.createUrlTree([router.parseUrl(ROUTES.login)], {
-            queryParams: { loggedOut: true, origUrl: state.url },
-          })
-    ),
+    take(1),
     catchError(err => {
-      router.navigate([ROUTES.login], {
-        queryParams: { loggedOut: true, origUrl: state.url },
-      });
+      router.navigate([ROUTES.authentification + '/login']);
       return of(false);
     })
   );
