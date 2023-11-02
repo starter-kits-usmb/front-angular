@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseAppComponent } from './core/components/base-app/base-app.component';
 import { AuthService } from './core/services/auth/auth.service';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,13 @@ export class AppComponent extends BaseAppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.isTokenValid().subscribe(res => {
-      if (!res) {
-        this.authService.logout();
-      }
-    });
+    this.authService
+      .isTokenValid()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(res => {
+        if (!res) {
+          this.authService.logout();
+        }
+      });
   }
 }

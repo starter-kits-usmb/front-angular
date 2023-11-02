@@ -6,25 +6,33 @@ import { AuthPayload } from '../../models/api/auth-payload';
 import { environment } from '../../../../environments/environment';
 import { ToastService } from '../toast/toast.service';
 import { ToastLevel } from '../../models/toast-level';
+import { getErrorMessage } from '../../utils/errors.utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  token: string = '';
-  connected: boolean = false;
+  private _token: string = '';
+  private _connected: boolean = false;
 
   constructor(
     private readonly http: HttpClient,
     private readonly toastService: ToastService
   ) {
-    this.getToken();
+    this.setupFromLocalStorage();
   }
 
-  getToken(): string {
-    this.token = localStorage.getItem('token') || '';
-    this.connected = !!this.token;
-    return this.token;
+  public get token(): string {
+    return this._token;
+  }
+
+  public get connected(): boolean {
+    return this._connected;
+  }
+
+  private setupFromLocalStorage(): void {
+    this._token = localStorage.getItem('token') || '';
+    this._connected = !!this._token;
   }
 
   isTokenValid(): Observable<boolean> {
@@ -49,13 +57,13 @@ export class AuthService {
       take(1),
       map(res => {
         if (!res.token) return false;
-        this.token = res.token;
+        this._token = res.token;
         localStorage.setItem('token', res.token);
-        this.connected = true;
+        this._connected = true;
         return true;
       }),
       catchError(err => {
-        this.toastService.Show(err.error.message, ToastLevel.Error);
+        this.toastService.Show(getErrorMessage(err), ToastLevel.Error);
         return of(false);
       })
     );
@@ -81,15 +89,15 @@ export class AuthService {
       catchError(err => {
         console.log(err);
 
-        this.toastService.Show(err.error.message, ToastLevel.Error);
+        this.toastService.Show(getErrorMessage(err), ToastLevel.Error);
         return of(false);
       })
     );
   }
 
   logout(): void {
-    this.token = '';
+    this._token = '';
     localStorage.removeItem('token');
-    this.connected = false;
+    this._connected = false;
   }
 }

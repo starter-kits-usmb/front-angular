@@ -13,8 +13,9 @@ describe('AuthService', () => {
       imports: [HttpClientModule],
     });
     service = TestBed.inject(AuthService);
-    service.token = '';
-    service.connected = false;
+    //override private for testing
+    (service as any)._token = '';
+    (service as any)._connected = false;
     localStorage.removeItem('token');
   });
 
@@ -22,19 +23,20 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('getToken', () => {
-    it('should return the token from localStorage if it exist', () => {
+  describe('setupFromLocalStorage', () => {
+    it('should setup the token from localStorage if it exist', () => {
       jest
         .spyOn(Object.getPrototypeOf(localStorage), 'getItem')
         .mockReturnValue('token');
-
-      expect(service.getToken()).toBe('token');
+      (service as any).setupFromLocalStorage();
+      expect(service.token).toBe('token');
     });
-    it("should return an empty string if localStorage doesn't have a token", () => {
+    it("should set the token as a empty string if localStorage doesn't have a token", () => {
       jest
         .spyOn(Object.getPrototypeOf(localStorage), 'getItem')
         .mockReturnValue(null);
-      expect(service.getToken()).toBe('');
+      (service as any).setupFromLocalStorage();
+      expect(service.token).toBe('');
     });
   });
 

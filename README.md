@@ -10,6 +10,7 @@ This starter kit use angular version `15.2.0` and includes the following feature
 - [x] Toast service (snackbar and loading screen)
 - [x] Modal service (support custom modals)
 - [x] Test setup (jest)
+- [x] docker compose for production
 
 ## Start from this template
 
@@ -68,7 +69,94 @@ The app is using lazy loading for modules. This means that the modules are loade
 
 ## Authentication service
 
-TODO - add documentation & fix the service
+The `AuthService` allows you to authenticate a user and keep it logged in thanks to localstorage with a JWT token.
+
+### Before starting
+
+don't forget to unsubscribe from observables. The easiest way is to use `takeUntil`as last operator of your pipe
+
+```typescript
+someobservable$.pipe(takeUntil(this.destroyed$)).subscribe( ... )
+```
+
+### AuthService
+
+First you need to import the authService and inject it.
+
+```typescript
+constructor(private readonly authService:AuthService){}
+```
+
+##### services attributes
+
+You can retrieve the user's token and check if the user is connected.
+
+```typescript
+const userToken: string = authService.token;
+const isUserConnected: boolean = authService.connected;
+```
+
+### Login
+
+connect a user. This method will automatically save the JWT token in the service and the local storage.
+In case of failure it will show an error toast.
+
+```typescript
+authService.login(login: string, password: string)
+  .pipe(takeUntil(this.destroy$))
+  .subscribe((loggedIn: boolean) => {
+    if (loggedIn) {
+      // Successfully logged in
+    } else {
+      // Handle login failure
+    }
+  });
+```
+
+### Register
+
+To allow users to create a new account. This will NOT connect the user.
+In case of failure it will show an error toast.
+
+```typescript
+authService.register(login: string, password: string)
+  .pipe(takeUntil(this.destroy$))
+  .subscribe((registered: boolean) => {
+    if (registered) {
+      // Successfully registered
+    } else {
+      // Handle registration failure
+    }
+  });
+```
+
+### Checking Token Validity
+
+You can check the validity of the user's token by using the `isTokenValid` method.
+If the token is invalid, the user will be logged out.
+
+```typescript
+authService
+  .isTokenValid()
+  .pipe(takeUntil(this.destroy$))
+  .subscribe((isValid: boolean) => {
+    if (isValid) {
+      // Token is valid
+    } else {
+      // Token is invalid or expired
+    }
+  });
+```
+
+### Logout
+
+To disconnect the user and clear their token.
+
+```typescript
+authService.logout();
+```
+
+That's it! You can now use the `AuthService` !
 
 ## Design system
 
