@@ -3,7 +3,7 @@ FROM node:18.16.0-alpine3.17 as builder
 
 WORKDIR /usr/src/app
 COPY . .
-RUN npm install & npm run build
+RUN npm install && npm run build
 
 # Step 2: Use build output from 'builder'
 FROM nginx:stable-alpine
