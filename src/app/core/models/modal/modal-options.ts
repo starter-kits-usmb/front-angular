@@ -1,5 +1,5 @@
 export interface ModalOptions {
-  title: string;
+  title?: string;
   message?: string;
   confirmText?: string;
   cancelText?: string;
@@ -9,6 +9,11 @@ export interface ModalOptions {
 
 export const DEFAULT_MODAL_OPTIONS: ModalOptions = {
   title: 'Modal title',
+  message: '',
+  confirmText: 'Yes',
+  cancelText: 'No',
+  confirmColor: 'primary',
+  cancelColor: 'basic',
 };
 
 export const MODAL_CONFIRM_OPTIONS: ModalOptions = {

@@ -158,6 +158,137 @@ authService.logout();
 
 That's it! You can now use the `AuthService` !
 
+## Modal service & custom modals
+
+The modal service allows you to open a modal and close it from anywhere in the app. It also allows you to create custom modals.
+
+### Create a custom modal
+
+Let's create the UsernameModalComponent.
+
+First be sure that the module where UsernameModalComponent is declared has imported the `SharedModule`.
+
+#### username-modal.component.ts
+
+To create a custom modal, you need to create a component that extends the `BaseModalComponent`, it allows you to open the modal with the service. You can modify the payload in your `handleClose` function.
+
+```typescript
+export class UsernameModalComponent extends BaseModalComponent {
+  username: string = '';
+
+  constructor() {
+    super();
+  }
+
+  handleClose(event: ModalPayload) {
+    const editedPayload = { ...event, data: this.username };
+    this.onClose(editedPayload);
+  }
+}
+```
+
+#### username-modal.component.html
+
+In the template you will need to use the modal component `app-modal`. This component will handle the modal logic & options. You can add your custom content inside the modal
+
+**You have to**
+
+- pass the `options` _(inherited from BaseModalComponent)_
+- define the function `handleClose` that will be called when the user close the modal.
+
+The `validator` is optional and allows you to disable the confirm button if the validator returns false.
+
+```html
+<app-modal
+  [options]="options"
+  [validator]="username !== ''"
+  (closeEvent)="handleClose($event)">
+  <!-- custom info -->
+  <div class="w-100 flex-col center middle">
+    <input
+      type="text"
+      class="basic"
+      placeholder="basic input"
+      [(ngModel)]="username"
+      placeholder="Name" />
+  </div>
+</app-modal>
+```
+
+### The service
+
+First you need to import the modalService and inject it.
+
+```typescript
+constructor(private readonly modalService:ModalService){}
+```
+
+Then you can either open any modal. Modals options are always optionals. you can custom mutliple options like the title, the size, the data etc...
+
+```typescript
+export interface ModalOptions {
+  title?: string;
+  message?: string;
+  confirmText?: string;
+  cancelText?: string;
+  confirmColor?: string;
+  cancelColor?: string;
+}
+```
+
+Here are the default options.
+
+```typescript
+{
+  title: 'Modal title',
+  message: '',
+  confirmText: 'Yes',
+  cancelText: 'No',
+  confirmColor: 'primary',
+  cancelColor: 'basic'
+}
+```
+
+```typescript
+openModal() {
+    this.modalService
+      .open(YourModalComponent, { title: "What's your name ?" })
+      .subscribe(payload => {
+        if (payload.success) {
+          // Do something, the modal was confirmed
+        } else {
+          // Do something else the modal was canceled
+        }
+      });
+  }
+```
+
+You can also open a confirmation modal (under the hood it's just a basic modal with different default options)
+
+```typescript
+{
+  title: 'Please confirm your choice',
+  message: 'Are you sure you want to do this?',
+  cancelText: 'Cancel',
+  confirmText: 'Confirm',
+  confirmColor: 'danger',
+}
+```
+
+```typescript
+openConfirmModal() {
+    this.modalService.openConfirmModal().subscribe(payload => {
+      if (payload.success) {
+        // Do something, user confirmed
+      } else {
+        // Do something else user canceled
+      }
+    });
+  }
+```
+
+And that's it! You can now use your modal ! You can check the `CustomModalComponent` in the app (in the `starter-kit` module) for a working example.
+
 ## Design system
 
 This is a very light design system, based on css classes. The idea is to have a set of classes that can be used to build the UI.
