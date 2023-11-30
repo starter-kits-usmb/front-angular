@@ -1,6 +1,12 @@
 @import '/src/app/styles/variables.scss';
 @import '/src/app/styles/mixins.scss';
-
+a {
+  text-decoration: none;
+  color: $text1;
+  u &:visited {
+    color: $text1;
+  }
+}
 nav {
   position: fixed;
   top: 0;
@@ -10,13 +16,6 @@ nav {
   width: calc(100% - 2rem);
   background-color: $background;
   padding: 0 1rem;
-  a {
-    text-decoration: none;
-    color: $text1;
-    u &:visited {
-      color: $text1;
-    }
-  }
 
   .nav-icon {
     display: none;

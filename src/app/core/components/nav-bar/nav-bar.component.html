@@ -7,7 +7,9 @@
   </div>
 
   <!-- nav items -->
-  <div class="flex-row menu content" [ngClass]="{ active: phoneMenuOpen }">
+  <div
+    class="flex-row menu middle content"
+    [ngClass]="{ active: phoneMenuOpen }">
     <a
       (click)="phoneMenuOpen = false"
       routerLink="/starter-kit"
@@ -26,7 +28,7 @@
       (click)="phoneMenuOpen = false"
       routerLink="auth/register"
       routerLinkActive="active"
-      class="black-btn"
+      class="btn primary"
       >Sign-up</a
     >
     <a
