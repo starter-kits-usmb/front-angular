@@ -289,6 +289,47 @@ openConfirmModal() {
 
 And that's it! You can now use your modal ! You can check the `CustomModalComponent` in the app (in the `starter-kit` module) for a working example.
 
+## Language service (i18n)
+
+i18n is a service that allows you to translate your app in multiple languages. It uses the `ngx-translate` library. You can find the translations in the `src/assets/i18n` folder. The default language is `en`, this can be changed in the `app.component.ts` file.
+
+### How to add a new language
+
+You can add more languages by creating a new file with the language code as the name (ex: `<lang>.json`) and to add the language code and label in the SUPPORTED_LANGUAGES constant in the `src/app/core/constants/languages.ts` file.
+
+### How to use the language service
+
+You need to import the `SharedModule` in your module. Then you can either use the `translate` pipe or the `LanguageService` to translate your app.
+
+if your translation file is like this:
+
+```json
+// en.json
+{
+  "global": {
+    "title": "Hello world"
+  }
+}
+```
+
+#### Using the pipe
+
+```html
+<p>{{ 'global.title' | translate }}</p>
+```
+
+#### Using the service
+
+```typescript
+constructor(private readonly languageService: LanguageService) {}
+
+ngOnInit() {
+  this.languageService.getTranslation('global.title').pipe(take(1)).subscribe((translation: string) => {
+    console.log(translation); // Hello world
+  });
+}
+```
+
 ## Design system
 
 This is a very light design system, based on css classes. The idea is to have a set of classes that can be used to build the UI.

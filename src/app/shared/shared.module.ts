@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from './components/modal/modal.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ModalComponent, ConfirmModalComponent],
@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     ConfirmModalComponent,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    TranslateModule,
   ],
 })
 export class SharedModule {}

@@ -11,6 +11,7 @@ import { BaseAppComponent } from './components/base-app/base-app.component';
 import { ModalInjectorComponent } from './components/modal-injector/modal-injector.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { BaseModalComponent } from './components/base-modal/base-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { BaseModalComponent } from './components/base-modal/base-modal.component
     ModalInjectorComponent,
     BaseModalComponent,
   ],
-  imports: [CommonModule, HttpClientModule, RouterModule],
+  imports: [CommonModule, HttpClientModule, RouterModule, TranslateModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

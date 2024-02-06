@@ -1,9 +1,16 @@
 <nav class="flex-row btw middle">
   <!-- Logo -->
-  <div>
+  <div class="flex-row middle left">
     <a routerLink="/home" class="logo" (click)="phoneMenuOpen = false">
       <img src="assets/icons/logo.svg" alt="logo" />
     </a>
+    <select name="lang-options" class="basic">
+      <option
+        *ngFor="let lang of supportedLanguages"
+        (click)="changeLang(lang.code)">
+        {{ lang.label }}
+      </option>
+    </select>
   </div>
 
   <!-- nav items -->
@@ -21,7 +28,7 @@
       (click)="phoneMenuOpen = false"
       routerLink="auth/login"
       routerLinkActive="active"
-      >Login</a
+      >{{ 'auth.login' | translate }}</a
     >
     <a
       *ngIf="!authService.connected"
@@ -29,14 +36,14 @@
       routerLink="auth/register"
       routerLinkActive="active"
       class="btn primary"
-      >Sign-up</a
+      >{{ 'auth.register' | translate }}</a
     >
     <a
       *ngIf="authService.connected"
       (click)="phoneMenuOpen = false"
       routerLink="user/profile"
       routerLinkActive="active"
-      >Profil</a
+      >{{ 'auth.profile' | translate }}</a
     >
   </div>
   <div class="menu nav-icon">

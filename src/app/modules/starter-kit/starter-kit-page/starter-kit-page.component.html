@@ -1,9 +1,9 @@
 <div class="main-container flex-col center">
-  <h1>What's available ?</h1>
+  <h1>{{ 'starterKit.available' | translate }}</h1>
   <div class="grid-col-2">
     <!-- Toast and loading -->
     <section class="flex-col center top">
-      <h2>Toasts, modal & loading screen</h2>
+      <h2>{{ 'starterKit.toastsAndMore' | translate }}</h2>
       <div class="flex-row wrap">
         <button class="success" (click)="showNotification('success')">
           Show a success notification
@@ -26,7 +26,7 @@
 
     <!-- Light Design system -->
     <section class="flex-col center top">
-      <h2>Light design system</h2>
+      <h2>{{ 'starterKit.designSystem' | translate }}</h2>
       <div class="flex-row wrap">
         <button class="basic">button basic</button>
         <button class="primary">button primary</button>
@@ -43,16 +43,21 @@
     </section>
     <!-- Custom layout classes -->
     <section class="flex-col center top">
-      <h2>Custom layout classes</h2>
+      <h2>{{ 'starterKit.layoutClasses' | translate }}</h2>
       <img src="assets/illustrations/demo_layout.svg" alt="" />
     </section>
 
     <section class="flex-col center top">
       <!-- Authentification -->
-      <h2>Authentification</h2>
+      <h2>{{ 'starterKit.authentication' | translate }}</h2>
       <p>
         An authentification service in core/services, ready to be linked with
         your backend. See the README.
+      </p>
+      <!-- Multiples languages -->
+      <h2>{{ 'starterKit.languages' | translate }}</h2>
+      <p>
+        Multiples languages are supported with ngx-translate. See the README.
       </p>
     </section>
   </div>

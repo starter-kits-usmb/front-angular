@@ -1,0 +1,24 @@
+{
+  "general": {
+    "submit": "Valider",
+    "cancel": "Annuler"
+  },
+  "auth": {
+    "login": "Se connecter",
+    "register": "S'inscrire",
+    "profile": "Profil",
+    "logout": "Se déconnecter",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "passwordRequirements": "Le mot de passe doit contenir au moins 8 caractères"
+  },
+  "starterKit": {
+    "available": "Qu'est-ce qui est disponible?",
+    "toastsAndMore": "Toasts, modales et écrans de chargement",
+    "designSystem": "Léger design system",
+    "layoutClasses": "Classe de structures",
+    "authentication": "Authentification",
+    "languages": "Langues"
+  }
+}

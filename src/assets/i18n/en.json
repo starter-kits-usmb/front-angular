@@ -1,0 +1,24 @@
+{
+  "general": {
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile",
+    "logout": "Logout",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "passwordRequirements": "Password must have 8 character minimum"
+  },
+  "starterKit": {
+    "available": "What's available ?",
+    "toastsAndMore": "Toasts, modal & loading screen",
+    "designSystem": "Light design system",
+    "layoutClasses": "Custom layout classes",
+    "authentication": "Authentication",
+    "languages": "Languages"
+  }
+}
