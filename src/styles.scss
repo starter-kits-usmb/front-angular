@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import '/src/app/styles/variables.scss';
-@import '/src/app/styles/mixins.scss';
-@import '/src/app/styles/layout.scss';
-@import '/src/app/styles/utilities.scss';
-@import '/src/app/styles/sk-design-system.scss';
+@import "./app/styles/variables.scss";
+@import "./app/styles/mixins.scss";
+@import "./app/styles/layout.scss";
+@import "./app/styles/utilities.scss";
+@import "./app/styles/sk-design-system.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 body {
   background-color: $background;
@@ -15,7 +15,7 @@ body {
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .main-container {

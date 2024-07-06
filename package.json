@@ -6,37 +6,31 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.3.3",
-    "@angular/common": "^17.3.3",
-    "@angular/compiler": "^17.3.3",
-    "@angular/core": "^17.3.3",
-    "@angular/forms": "^17.3.3",
-    "@angular/platform-browser": "^17.3.3",
-    "@angular/platform-browser-dynamic": "^17.3.3",
-    "@angular/router": "^17.3.3",
-    "@ngx-translate/core": "^15.0.0",
-    "@ngx-translate/http-loader": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "prettier-eslint": "^16.1.1",
+    "@angular/animations": "^18.0.0",
+    "@angular/common": "^18.0.0",
+    "@angular/compiler": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/platform-browser": "^18.0.0",
+    "@angular/platform-browser-dynamic": "^18.0.0",
+    "@angular/router": "^18.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.4"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.3.3",
-    "@angular/cli": "~17.3.3",
-    "@angular/compiler-cli": "^17.3.3",
+    "@angular-devkit/build-angular": "^18.0.7",
+    "@angular/cli": "^18.0.7",
+    "@angular/compiler-cli": "^18.0.0",
+    "@angular/localize": "^18.0.6",
     "@types/jest": "^29.5.6",
     "jest": "^29.7.0",
     "jest-preset-angular": "^14.0.3",
-    "prettier": "^3.0.3",
-    "typescript": "^5.4.3"
+    "typescript": "~5.4.2",
+    "prettier": "^3.0.3"
   },
   "jest": {
     "preset": "jest-preset-angular",

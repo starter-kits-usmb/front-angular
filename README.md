@@ -1,6 +1,6 @@
 # AngularStarterKit
 
-This starter kit use angular version `15.2.0` and includes the following features:
+This starter kit use angular version `18.0.0` and includes the following features:
 
 - [x] Scalable folder structure
 - [x] Linter and prettier
@@ -33,22 +33,22 @@ Run `ng test` to execute the unit tests via jest.
 ## Folder structure
 
 ```bash
+public/
+├─ assets/ # static assets
+│  ├─ icons/
+│  ├─ illustrations/
 src/
 ├─ app/ # source code of the application
-│  ├─ core/ # core module, imported once in root module
-│  │  ├─ components/ # singleton components, like header, footer etc..
+│  ├─ core/ # core components and classes etc
+│  │  ├─ components/ # generic components and header, footer etc..
 │  │  ├─ constants/ # constants for the app
 │  │  ├─ guards/ # guards for routes
 │  │  ├─ interceptors/ # interceptors for http requests
 │  │  ├─ models/ # models, interfaces for your app
-│  │  ├─ services/ # services/stores, api calls etc..
-│  ├─ modules/ # features (lazy loaded)
-│  ├─ shared/ # everything that is shared between modules
+│  │  ├─ services/ # general services
+│  ├─ modules/ # features
 │  ├─ styles/ # global styles
 │  ├─ app.component.ts # the root component (there is more files hidden for simplicity)
-├─ assets/ # static assets
-│  ├─ icons/
-│  ├─ illustrations/
 ├─ environments/ # environment variables. DO NOT PUT SECRETS HERE. THIS IS VISIBILE IN THE BROWSER
 ```
 
@@ -65,7 +65,7 @@ and configure them to lint on save.
 
 ## Routing and lazy loading
 
-The app is using lazy loading for modules. This means that the modules are loaded only when the user navigates to the route. This is a good practice to improve the performance of the app. The routing is configured in `app-routing.module.ts` file and each module has its own routing file.
+The app is using standalone components. This means that the components are loaded only when the user navigates to the route. This is a good practice to improve the performance of the app. The routing is configured in `app.routes.ts` file.
 
 ## Authentication service
 
@@ -291,26 +291,7 @@ And that's it! You can now use your modal ! You can check the `CustomModalCompon
 
 ## Language service (i18n)
 
-i18n is a service that allows you to translate your app in multiple languages. It uses the `ngx-translate` library. You can find the translations in the `src/assets/i18n` folder. The default language is `en`, this can be changed in the `app.component.ts` file.
-
-### How to add a new language
-
-You can add more languages by creating a new file with the language code as the name (ex: `<lang>.json`) and to add the language code and label in the SUPPORTED_LANGUAGES constant in the `src/app/core/constants/languages.ts` file.
-
-### How to use the language service
-
-You need to import the `SharedModule` in your module. Then you can either use the `translate` pipe or the `LanguageService` to translate your app.
-
-if your translation file is like this:
-
-```json
-// en.json
-{
-  "global": {
-    "title": "Hello world"
-  }
-}
-```
+see angular internationalization documentation for more information: [angular i18n](https://angular.dev/guide/i18n)
 
 #### Using the pipe
 

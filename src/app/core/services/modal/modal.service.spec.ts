@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ModalService } from './modal.service';
-import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 import { BaseModalComponent } from '../../components/base-modal/base-modal.component';
+import { ConfirmModalComponent } from '../../components/confirm-modal/confirm-modal.component';
 
 describe('AuthService', () => {
   let service: ModalService;
@@ -30,7 +30,7 @@ describe('AuthService', () => {
       jest.spyOn(service.viewContainerRef, 'createComponent');
       service.open(ConfirmModalComponent);
       expect(service.viewContainerRef.createComponent).toHaveBeenCalledWith(
-        ConfirmModalComponent
+        ConfirmModalComponent,
       );
     });
   });
@@ -40,7 +40,7 @@ describe('AuthService', () => {
       jest.spyOn(service.viewContainerRef, 'createComponent');
       service.openConfirmModal();
       expect(service.viewContainerRef.createComponent).toHaveBeenCalledWith(
-        ConfirmModalComponent
+        ConfirmModalComponent,
       );
     });
   });
@@ -49,7 +49,7 @@ describe('AuthService', () => {
     it('should destroy the latest modal', () => {
       const modals = [new BaseModalComponent(), new BaseModalComponent()];
       service.modals = modals.map(
-        modal => ({ instance: modal, destroy: jest.fn() }) as any
+        (modal) => ({ instance: modal, destroy: jest.fn() }) as any,
       );
       const spied = jest.spyOn(service.modals[1], 'destroy');
       service.closeLatestModal();
@@ -62,7 +62,7 @@ describe('AuthService', () => {
     it('should destroy all modals', () => {
       const modals = [new BaseModalComponent(), new BaseModalComponent()];
       service.modals = modals.map(
-        modal => ({ instance: modal, destroy: jest.fn() }) as any
+        (modal) => ({ instance: modal, destroy: jest.fn() }) as any,
       );
       service.closeAll();
       expect(service.modals.length).toBe(0);

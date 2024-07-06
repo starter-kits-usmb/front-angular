@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
+  standalone: true,
   selector: 'app-base-component',
   template: '',
 })

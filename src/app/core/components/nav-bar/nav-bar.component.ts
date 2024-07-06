@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../../modules/authentification/services/auth/auth.service';
 import { BaseAppComponent } from '../base-app/base-app.component';
-import { TranslateService } from '@ngx-translate/core';
 import { SUPPORTED_LANGUAGES } from '../../constants/languages';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
 })
 export class NavBarComponent extends BaseAppComponent {
   //isConnected = false;
   //use AuthentificationService to get the current user
   phoneMenuOpen = false;
   supportedLanguages = SUPPORTED_LANGUAGES;
-  constructor(
-    public readonly authService: AuthService,
-    private readonly translate: TranslateService
-  ) {
+  constructor(public readonly authService: AuthService) {
     super();
   }
 
   changeLang(lang: string): void {
-    this.translate.use(lang);
+    //to implement, this should redirect on host/lang/
   }
 }

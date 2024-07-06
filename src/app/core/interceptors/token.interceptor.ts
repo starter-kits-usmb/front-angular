@@ -6,14 +6,14 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from '../../modules/authentification/services/auth/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(private readonly authService: AuthService) {}
   intercept(
     request: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     const token = this.authService.token;
 

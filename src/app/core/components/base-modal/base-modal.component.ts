@@ -7,7 +7,9 @@ import {
 } from '../../models/modal/modal-options';
 
 @Component({
+  standalone: true,
   template: '',
+  imports: [BaseAppComponent],
 })
 export class BaseModalComponent extends BaseAppComponent {
   @Input() options: ModalOptions = DEFAULT_MODAL_OPTIONS;

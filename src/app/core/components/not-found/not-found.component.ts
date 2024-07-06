@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BaseAppComponent } from '../base-app/base-app.component';
 
 @Component({
+  standalone: true,
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.scss'],

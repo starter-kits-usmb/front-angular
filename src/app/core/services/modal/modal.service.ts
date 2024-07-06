@@ -12,7 +12,7 @@ import {
   ModalOptions,
 } from '../../models/modal/modal-options';
 import { BaseModalComponent } from '../../components/base-modal/base-modal.component';
-import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
+import { ConfirmModalComponent } from '../../components/confirm-modal/confirm-modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,9 @@ export class ModalService {
   modals: ComponentRef<any>[] = [];
   public viewContainerRef!: ViewContainerRef;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    console.log('ModalService constructor called');
+  }
 
   open(content: any, options?: ModalOptions) {
     this.document.body.style.overflow = 'hidden';
@@ -44,7 +46,7 @@ export class ModalService {
   }
 
   openConfirmModal(
-    options: ModalOptions = MODAL_CONFIRM_OPTIONS
+    options: ModalOptions = MODAL_CONFIRM_OPTIONS,
   ): Observable<ModalPayload> {
     this.document.body.style.overflow = 'hidden';
     const modal = this.viewContainerRef.createComponent(ConfirmModalComponent);
@@ -70,7 +72,7 @@ export class ModalService {
 
   private destroyModal(modal: ComponentRef<any>) {
     modal?.destroy();
-    this.modals = this.modals.filter(m => m !== modal);
+    this.modals = this.modals.filter((m) => m !== modal);
     if (this.modals.length === 0) {
       this.document.body.style.overflow = 'auto';
     }

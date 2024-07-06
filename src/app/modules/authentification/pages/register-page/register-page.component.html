@@ -1,0 +1,49 @@
+<div class="main-container flex-row middle center">
+  <form [formGroup]="signupForm" class="flex-col center middle">
+    <h1 i18n>Register</h1>
+    <input
+      type="text"
+      formControlName="login"
+      class="basic"
+      id="login"
+      i18n-placeholder
+      placeholder="username"
+    />
+    <input
+      type="password"
+      formControlName="password"
+      class="basic"
+      id="password"
+      i18n-placeholder
+      placeholder="password"
+    />
+    <input
+      type="password"
+      formControlName="passwordVerification"
+      class="basic"
+      id="password"
+      i18n-placeholder
+      placeholder="Confirm password"
+    />
+    @if (errorInForm) {
+      <p class="error-message">{{ errorMessage }}</p>
+    } @else {
+      <p class="pwd-info" i18n>Password must have 8 character minimum</p>
+    }
+    <button
+      type="submit"
+      (click)="onSubmitForm()"
+      class="primary"
+      [disabled]="signupForm.invalid"
+      i18n
+    >
+      Submit
+    </button>
+  </form>
+  <img
+    class="illustration"
+    src="assets/illustrations/auth.svg"
+    i18n-alt
+    alt="register illustration"
+  />
+</div>

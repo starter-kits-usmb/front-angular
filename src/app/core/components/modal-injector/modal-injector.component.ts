@@ -7,6 +7,7 @@ import {
 import { ModalService } from '../../services/modal/modal.service';
 
 @Component({
+  standalone: true,
   selector: 'app-modal-injector',
   templateUrl: './modal-injector.component.html',
   styleUrls: ['./modal-injector.component.scss'],
